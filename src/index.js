@@ -1,14 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Title from "./components/Title";
+import LinksTable from "./components/LinksTable";
+import Links from "./api/GetLinks";
 
-const App = () => {
-  return <h1>YEET MAN</h1>;
-};
 
 ReactDOM.render(
   <Router>
-    <App />
+    <Title />
+    <LinksTable />
+    {/* <Links /> */}
   </Router>,
   document.getElementById("app")
 );
