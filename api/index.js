@@ -1,5 +1,8 @@
+const router = require("express");
 const express = require("express");
 const apiRouter = express.Router();
+
+const BASE_URL = "/api";
 
 const {
   getAllLinks,
@@ -7,9 +10,9 @@ const {
   createInitialLinks,
   createTags,
   getAllTags,
-} = require("../index");
+} = require("../data_layer");
 
-apiRouter.get("/data_layer/index", async (req, res, next) => {
+apiRouter.get(`/Links`, async (req, res, next) => {
   try {
     const allLinks = await getAllLinks();
     res.send({
@@ -20,7 +23,7 @@ apiRouter.get("/data_layer/index", async (req, res, next) => {
   }
 });
 
-apiRouter.get(`/data_layer/index.js${tagName}/tags`, async (req, res) => {
+apiRouter.get(`/tags`, async (req, res) => {
   try {
     const allTags = await getAllTags();
 
@@ -34,7 +37,7 @@ apiRouter.get(`/data_layer/index.js${tagName}/tags`, async (req, res) => {
   }
 });
 
-apiRouter.post("/data_layer/index.js", async (req, res, next) => {
+apiRouter.post("/post", async (req, res, next) => {
   const { url, comments } = req.body;
   try {
     const link = await createLink(url, comments);
@@ -52,3 +55,7 @@ apiRouter.post("/data_layer/index.js", async (req, res, next) => {
 
 // POST /api/links (creates tags during link creation)
 // PATCH /api/links/:id (used both to update comment/tags as well as to increment the click count)
+
+module.exports = {
+  apiRouter,
+};
