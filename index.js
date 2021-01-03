@@ -1,5 +1,6 @@
 const express = require("express");
 const path = require("path");
+const { apiRouter } = require("./api");
 
 const { sync } = require("./data_layer/index");
 
@@ -11,11 +12,15 @@ const app = express();
 app.use(express.static(path.join(__dirname, "build")));
 
 app.get("/", (req, res) => {
-  res.send("yeet");
+  res.sendFile(path.join(__dirname, "build", "index.html"));
 });
+
+app.use("/api", apiRouter);
 
 const startServer = new Promise((resolve) => {
   app.listen(PORT, () => {
+    console.log("We're connected on port " + PORT);
+
     resolve();
   });
 });
