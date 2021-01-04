@@ -19,7 +19,7 @@ async function getAllLinks() {
 
 // create new link
 const createLink = async (linkFields) => {
-  const { url, comment } = linkFields;
+  const { url, comment, clickCount } = linkFields;
 
   try {
     if (!url) {
@@ -30,7 +30,7 @@ const createLink = async (linkFields) => {
     } = await client.query(
       `
       INSERT INTO 
-      links(url, comment)
+      links(url, comment, clickCount)
       VALUES($1, $2)
       RETURNING *;
     `,
