@@ -16,10 +16,10 @@ apiRouter.get(`/Links`, async (req, res, next) => {
   try {
     const allLinks = await getAllLinks();
     res.send({
-      allLinks,
+      Links: allLinks
     });
   } catch (error) {
-    console.error(error);
+    next(error);
   }
 });
 

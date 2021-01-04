@@ -1,26 +1,10 @@
 import React from "react";
 import { Container, Table } from "react-bootstrap";
 
-// dummy data
-const dummyData = [
-  {
-    website: "google.com",
-    comment: "a search engine",
-    clicks: 240,
-  },
-  {
-    website: "facebook.com",
-    comment: "a place to fight about politics",
-    clicks: 199,
-  },
-  {
-    website: "fullstackacademy.com",
-    comment: "learn to code",
-    clicks: 12,
-  },
-];
 
-function LinksTable() {
+function LinksTable({storedLinks, setStoredLinks}) {
+    console.log(storedLinks);
+
   return (
     <Container fluid="sm">
       <Table striped hover>
@@ -32,20 +16,21 @@ function LinksTable() {
           </tr>
         </thead>
         <tbody>
-          {dummyData.map((site, i) => {
+          {storedLinks.map((site, i) => {
+              console.log(site);
             return (
               <tr key={i}>
                 <td>
                   <a
-                    href={`https://www.${site.website}`}
+                    href={toString(site.link)}
                     target="_blank"
                     rel="noreferrer noopener"
                   >
-                    {site.website}
+                    {site.link}
                   </a>
                 </td>
                 <td>{site.comment}</td>
-                <td>{site.clicks}</td>
+                <td>{site.clickcount}</td>
               </tr>
             );
           })}

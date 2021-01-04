@@ -4,7 +4,7 @@ const { apiRouter } = require("./api");
 
 const { sync } = require("./data_layer/index");
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 const FORCE = process.env.FORCE || false;
 
 const app = express();

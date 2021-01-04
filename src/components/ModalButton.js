@@ -3,9 +3,10 @@ import {Modal, Button} from 'react-bootstrap';
 import ModalForm from './ModalForm';
 
 function ModalButton() {
-
+  const [modalShow, setModalShow] = React.useState(false);
 
 function MyVerticallyCenteredModal(props) {
+  
     return (
       <Modal
         {...props}
@@ -19,18 +20,21 @@ function MyVerticallyCenteredModal(props) {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <ModalForm />
+          <ModalForm 
+            setModalShow={setModalShow}/>
         </Modal.Body>
       </Modal>
     );
   }
   
   function App() {
-    const [modalShow, setModalShow] = React.useState(false);
+    
   
     return (
       <>
-        <Button variant="primary" onClick={() => setModalShow(true)}>
+        <Button variant="primary" 
+          onClick={() => 
+            setModalShow(true)}>
           Add a New Link!
         </Button>
   
