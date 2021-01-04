@@ -22,9 +22,8 @@ function LinksTable({storedLinks, setStoredLinks}) {
               <tr key={i}>
                 <td>
                   <a
-                    href={toString(site.link)}
+                    href={`https://${site.link}`}
                     target="_blank"
-                    rel="noreferrer noopener"
                   >
                     {site.link}
                   </a>
